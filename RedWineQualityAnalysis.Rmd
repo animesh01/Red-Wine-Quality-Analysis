@@ -1,12 +1,18 @@
 ---
 title: "Red Wine Quality Analysis"
-output: html_document
+author: "Author : Animesh Chowdhury"
+output:
+  html_document: 
+    toc: true # Creates table of contents
+    theme: united
+    toc_depth: 3
+    toc_float: true
 ---
 
-Dataset Overview:
+**Dataset Overview: **
 This tidy data set contains 1,599 red wines with 11 variables on the chemical properties of the wine.The inputs include objective tests (e.g. PH values) and the output is based on sensory data (median of at least 3 evaluations made by wine experts).At least 3 wine experts rated the quality of each wine, providing a rating between 0 (very bad) and 10 (very excellent).
 
-Variables:
+**Variables: **
 Input variables (based on physicochemical tests):
 fixed acidity (tartaric acid - g / dm^3),
 volatile acidity (acetic acid - g / dm^3),
@@ -23,7 +29,7 @@ alcohol (% by volume),
 Output variable (based on sensory data): 
 quality (score between 0 and 10)
 
-Scope of Analysis:
+**Scope of Analysis: **
 In this analysis we will try to evaluate the chemical properties which affect the quality of red wine.
 
 ```{r setup, include=FALSE}
@@ -58,7 +64,7 @@ The data file summary
 # Provides summary statistics like mean, median for a given attribute in the dataframe
 summary(WineQ)
 ```
-Observation:
+**Observation: **
 Since mean for none of the variables are NA hence there are no missing values in the dataset.
 
 # Univariate Plot Section
@@ -73,7 +79,7 @@ library("ggplot2")
 ggplot(aes(x = pH), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the pH variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed.
 
 
@@ -99,7 +105,7 @@ Summary after the transformation
 summary(log(WineQ$pH))
 ```
 
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is now normally distributed. After the log transformation the scale on the x axis has reduced from 2.7 to 4.0 into 1.0 to 1.3
 
 Plotting fixed.acidity variable
@@ -110,7 +116,7 @@ library("ggplot2")
 ggplot(aes(x = fixed.acidity, fill = I('blue')), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the fixed.acidity variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Transforming the data into a normal distribution
@@ -137,7 +143,7 @@ Summary after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$fixed.acidity))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is now normally distributed. After the log transformation the scale on the x axis has reduced from 4.6 to 15.9 into 1.5 to 2.7
 
 Plotting the volatile.acidity variable
@@ -148,7 +154,7 @@ library("ggplot2")
 ggplot(aes(x = volatile.acidity), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the volatile.acidity variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Transforming the data into a normal distribution
@@ -172,7 +178,7 @@ Summary after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$volatile.acidity))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is now normally distributed. After the log transformation the scale on the x axis has reduced from 0.12 to 1.5 into -2.1 to 0.4
 
 Plotting the citric.acid variable
@@ -183,7 +189,7 @@ library("ggplot2")
 ggplot(aes(x = citric.acid, fill = I("red")), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the citric.acid variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Data transformation 
@@ -209,7 +215,7 @@ Summarizing the data after transformation
 # Checking summary after the log transformation
 summary(log(WineQ$citric.acid))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 0.0 to 1 into -Inf to 0. Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
 
 Plotting the residual.sugar variable
@@ -220,7 +226,7 @@ library("ggplot2")
 ggplot(aes(x = residual.sugar), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the residual.sugar variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Transforming the data to a normal distribution
@@ -244,7 +250,7 @@ Summarizing the data after data transformation
 # Checking summary after the log transformation
 summary(log(WineQ$residual.sugar))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 0.9 to 15.5 into -0.1 to 2.7 Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
 
 Plotting the chloride variable
@@ -255,7 +261,7 @@ library("ggplot2")
 ggplot(aes(x = chlorides), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for the chlorides variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Transforming to a normal distribution
@@ -279,7 +285,7 @@ Summarizing after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$chlorides))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is now normally distributed. After the log transformation the scale on the x axis has reduced from 0 to 0.6 into -4.4 to -0.4 
 
 Plotting the free.sulfur.dioxide variable
@@ -290,7 +296,7 @@ library("ggplot2")
 ggplot(aes(x = free.sulfur.dioxide), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for free.sulfur.dioxide variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Plotting after the transformation to a normal distribution
@@ -314,7 +320,7 @@ Summarizing after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$free.sulfur.dioxide))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 1 to 72 into 0 to 4.2 Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
 
 Plotting total.sulfur.dioxide variable
@@ -325,7 +331,7 @@ library("ggplot2")
 ggplot(aes(x = total.sulfur.dioxide), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for total.sulfur.dioxide variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. The bar chart infact helps us to conclude that the distribution is right skewed.
 
 Plotting total.sulfur.dioxide after the data transformation
@@ -349,7 +355,7 @@ Summarizing after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$total.sulfur.dioxide))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is normally distributed. After the log transformation the scale on the x axis has reduced from 6 to 289 into 1.7 to 5.6  
 
 Plotting density variable
@@ -361,7 +367,7 @@ ggplot(aes(x = density), data = WineQ) +
   geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for density variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed.
 
 Plotting Density after the data transformation
@@ -385,7 +391,7 @@ Summarizing after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$density))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is normally distributed. After the log transformation the scale on the x axis has reduced from 0.9 to 1 into -0.0 to 0.0  
 
 Plotting sulphates variable
@@ -396,7 +402,7 @@ library("ggplot2")
 ggplot(aes(x = sulphates, fill = I('Yellow')), data = WineQ) + geom_bar()
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for sulphates variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. Infact the distribution is right skewed.
 
 Plotting sulphates variable after the transformation
@@ -422,7 +428,7 @@ Summarizing after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$sulphates))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 0.3 to 2 into -1.1 to 0.6 Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
 
 Plotting alcohol variable
@@ -435,7 +441,7 @@ ggplot(aes(x = alcohol, color = I('orange')), data = WineQ) +
 
 ```
 
-Observation:
+**Observation: **
 The above bar chart visualization shows distribution for alcohol variable. Since we observe break points in the distribution hence we can infer that it is not uniformly distributed across all values. Also we can observe that the data is not normally distributed. Infact the distribution is right skewed.
 
 Plotting alcohol variable after the transformation
@@ -462,7 +468,7 @@ Summarizing alcohol variable after the transformation
 # Checking summary after the log transformation
 summary(log(WineQ$alcohol))
 ```
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 8.4 to 14.9 into 2.1 to 2.7 Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
 
 Plotting quality variable
@@ -476,35 +482,18 @@ quality_viz <-
 quality_viz
 ```
 
-Observation:
-The above bar chart visualization shows distribution for quality variable. Since we observe no break points in the distribution hence we can infer that it is uniformly distributed across all values. Also we can observe that the data is not normally distributed. Infact the distribution is left skewed.
-
-```{r}
-# We will plot a density distribution visual to observe the distribution after log transformation
-library("ggplot2")
-quality_viz <-
-  ggplot(aes(x = log(quality), fill = I('pink')), data = WineQ) + 
-  geom_density()
-quality_viz
-```
+**Observation: **
+The above bar chart visualization shows distribution for quality variable. Since we observe no break points in the distribution hence we can infer that it is uniformly distributed across all values. Since it is an ordinal data we won't perform any log transformation for the quality attribute. 
 
 Summarizing the quality variable before transformation
 
 ```{r}
-# Checking summary before the log transformation
+# Checking summary for the quality attribute
 summary(WineQ$quality)
 ```
 
-Summarizing the quality variable after transformation
-
-```{r}
-# Checking summary after the log transformation
-summary(log(WineQ$quality))
-```
-
-Observation:
+**Observation: **
 From the above visual and summary statistics we can infer that the distribution is still not normally distributed. After the log transformation the scale on the x axis has reduced from 3 to 8 into 1 to 2 Some alternate transformation procedures need to be followed in order to convert this attribute into a normal distribution. 
-
 
 # Bivariate Plots Section
 
@@ -536,7 +525,7 @@ x <- cor(WineQ)
 corrplot(x, type = "upper", order = "hclust", t1.col = "black") 
 ```
 
-Observation: 
+**Observation: **
 From the above visualization we can infer that the quality attribute is correlated with alcohol, sulphates and citric.acid. Among these 3 chemical properties quality has correlation coefficient highest with alcohol at 0.48 and reduces with sulphates at 0.25 and citric.acid 0.23. If we observe the correlation coefficients it still does not show a strong relationship (Strong positive correlation will usually have coefficients of 0.5 and above) but in the analysis among the available attributes these 3 variables are correlated with quality of red wine to some extent. Therefore we should try to reduce our scope of analysis and try to explore more with these 3 attributes as far as quality of red wine is concerned. 
 
 Anova Analysis:
@@ -548,12 +537,21 @@ Null Hypothesis (H0): There is no relationship between alcohol and quality of a 
 Alternate Hypothesis (H1): There is a relationship between alcohol and quality of wine
 
 ```{r}
+# Scatterplot visualization to compare quality vs alcohol
+ggplot(aes(x = log(alcohol), y = quality), data = WineQ) +
+  geom_jitter(alpha = 0.4) +
+  stat_smooth(method = 'lm')
+```
+
+**Observation: ** To account for overplotting we have used geom_jitter against geom_point with a transparency set to 0.0000000005 to observe the distribution a bit clearly. 
+
+```{r}
 # Using combination of density and scatterplot visualization to compare the relationship
 library(gridExtra)
 library(grid)
 corPlot <-
-ggplot(aes(x = log(alcohol), y = log(quality)), data = WineQ) +
-geom_point() +
+ggplot(aes(x = log(alcohol), y = quality), data = WineQ) +
+geom_jitter(alpha = 0.4) +
 stat_smooth(method = 'lm')
 grid.arrange(alcohol_viz,
 grid.rect(gp = gpar(col = "white")),
@@ -564,10 +562,10 @@ ncol = 2)
 
 ```{r}
 # Summary statistics after anova analysis
-a <- anova(lm(log(alcohol) ~ log(quality), data = WineQ))
+a <- anova(lm(log(alcohol) ~ quality, data = WineQ))
 a
 ```
-Observation:
+**Observation: **
 As the p value is less than 0.05 we reject the null hypothesis and therefore there is a relationship betweeen quality of wine and alcohol.
 
 Anova Analysis between sulphates and quality:
@@ -576,11 +574,21 @@ Null Hypothesis (H0): There is no relationship between sulphates and quality of 
 Alternate Hypothesis (H1): There is a relationship between sulphates and quality of wine
 
 ```{r}
+# Scatterplot visualization to compare quality vs sulphates
+ggplot(aes(x = log(sulphates), y = quality), data = WineQ) + 
+  geom_jitter(alpha = 0.4) +
+  stat_smooth(method = 'lm')
+```
+
+**Observation: ** To account for overplotting we have used geom_jitter against geom_point with a transparency set to 0.0000000005 to observe the distribution a bit clearly. 
+
+```{r}
 # Using combination of density and scatterplot visualization to compare the relationship
 library(gridExtra)
 library(grid)
 corPlot <-
-ggplot(aes(x = log(sulphates), y = log(quality)), data = WineQ) + geom_point() +
+ggplot(aes(x = log(sulphates), y = quality), data = WineQ) + 
+geom_jitter(alpha = 0.4) +
 stat_smooth(method = 'lm')
 grid.arrange(sulphates_viz,
 grid.rect(gp = gpar(col = "white")),
@@ -591,10 +599,10 @@ ncol = 2)
 
 ```{r}
 # Summary statistics after anova analysis
-anova_sul_qual <- anova(lm(log(sulphates) ~ log(quality), data = WineQ))
+anova_sul_qual <- anova(lm(log(sulphates) ~ quality, data = WineQ))
 anova_sul_qual
 ```
-Observation:
+**Observation: **
 As p<0.05 hence we reject null hypothesis and there is a relationship between sulphates and quality of a wine
 
 Anova Analysis between citric.acid and quality:
@@ -603,11 +611,21 @@ Null Hypothesis (H0): There is no relationship between citric.acid and quality o
 Alternate Hypothesis (H1): There is a relationship between citric.acid and quality of wine
 
 ```{r}
+# Scatterplot visualization to compare quality vs citric.acid
+ggplot(aes(x = log(citric.acid), y = quality), data = WineQ) + 
+  geom_jitter(alpha = 0.4) +
+  stat_smooth(method = 'lm')
+```
+
+**Observation: ** To account for overplotting we have used geom_jitter against geom_point with a transparency set to 0.0000000005 to observe the distribution a bit clearly. 
+
+```{r}
 # Using combination of density and scatterplot visualization to compare the relationship
 library(gridExtra)
 library(grid)
 corPlot <-
-ggplot(aes(x = log(citric.acid), y = log(quality)), data = WineQ) + geom_point() +
+ggplot(aes(x = log(citric.acid), y = quality), data = WineQ) + 
+geom_jitter(alpha = 0.4) +
 stat_smooth(method = 'lm')
 grid.arrange(citric_acid,
 grid.rect(gp = gpar(col = "white")),
@@ -618,10 +636,10 @@ ncol = 2)
 
 ```{r}
 # Summary statistics after anova analysis
-anova_citric_quality <- anova(lm(citric.acid ~ log(quality), data = WineQ))
+anova_citric_quality <- anova(lm(citric.acid ~ quality, data = WineQ))
 anova_citric_quality
 ```
-Observation:
+**Observation: **
 As p<0.05 we reject the null hypothesis and accept the alternate hypothesis. Therefore, there is a relationship between citric.acid and quality of a wine
 
 # Multivariate Plots Section
@@ -635,11 +653,11 @@ Comparing Citric.Acid vs Sulphates By Quality
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = sulphates, y = citric.acid), data = WineQ) +
-  geom_point(aes(color = quality, alpha = 0.0005)) +
+  geom_jitter(aes(color = quality), alpha = 0.4) +
   geom_smooth(method = lm)
 ```
 
-Observation: 
+**Observation: **
 In the above scatterplot visualization we can infer that citric.acid has a strong linear positive relationship with sulphates attribute. We have used lm function to fit linear models. The Linear regression line is plotted at 95% confidence interval.
 
 Comparing Alcohol vs Citric.Acid By Quality
@@ -647,11 +665,11 @@ Comparing Alcohol vs Citric.Acid By Quality
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = citric.acid, y = alcohol), data = WineQ) +
-  geom_point(aes(color = quality, alpha = 0.0005)) +
+  geom_jitter(aes(color = quality), alpha = 0.4) +
   geom_smooth(method = lm)
 ```
 
-Observation: 
+**Observation: ** 
 In the above scatterplot visualization we can infer that alcohol has a linear positive relationship with citric.acid attribute but we don't observe a strong relationship. We have used lm function to fit linear models. The Linear regression line is plotted at 95% confidence interval.
 
 Comparing Sulphates vs Alcohol By Quality
@@ -659,11 +677,11 @@ Comparing Sulphates vs Alcohol By Quality
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = alcohol, y = sulphates), data = WineQ) +
-  geom_point(aes(color = quality, alpha = 0.0005)) +
+  geom_jitter(aes(color = quality), alpha = 0.4) +
   geom_smooth(method = lm)
 ```
 
-Observation: 
+**Observation: **
 In the above scatterplot visualization we can infer that sulphates has a linear positive relationship with alcohol attribute but we don't observe a strong relationship. We have used lm function to fit linear models. The Linear regression line is plotted at 95% confidence interval.
 
 Comparing Citric.acid vs Sulphates vs Alcohol By Quality
@@ -671,15 +689,15 @@ Comparing Citric.acid vs Sulphates vs Alcohol By Quality
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = sulphates, y = citric.acid), data = WineQ) +
-  geom_point(aes(
+  geom_jitter(aes(
   color = quality,
-  size = alcohol,
-  alpha = 0.005
-  )) +
+  size = alcohol),
+  alpha = 0.4
+  ) +
   geom_smooth(method = lm) 
 ```
 
-Observation: 
+**Observation: **
 In the above scatterplot visualization we can infer that sulphates has a strong linear positive relationship with citric.acid attribute. We have used lm function to fit linear models. The Linear regression line is plotted at 95% confidence interval. We can conclude that major red wines with high alcohol and high quality content are in sulphates between 0.5-1 and citric.acid 0-0.75 range.
 
 # Final Plots and Summary
@@ -707,7 +725,7 @@ Reason for selection of the visualization,
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = sulphates, y = citric.acid), data = WineQ) +
-  geom_point(aes(color = quality, alpha = 0.0005)) +
+  geom_jitter(aes(color = quality), alpha = 0.4) +
   geom_smooth(method = lm) +
   ggtitle(" Comparing citric.acid vs sulphates by quality ") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -728,11 +746,11 @@ Reason for selection of the visualization,
 ```{r}
 # Using Scatterplot visual to compare the attributes
 ggplot(aes(x = sulphates, y = citric.acid), data = WineQ) +
-  geom_point(aes(
+  geom_jitter(aes(
   color = quality,
-  size = alcohol,
-  alpha = 0.005
-  )) +
+  size = alcohol),
+  alpha = 0.4
+  ) +
   geom_smooth(method = lm) +
   ggtitle(" Comparing citric.acid vs sulphates by quality & alcohol") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -758,7 +776,7 @@ Future scope:
 There could be machine learning algorithms applied to the dataset for example:
 Outlier detection algorithms could be used to detect the few excellent or poor wines. We could also perform some classification algorithm to classify excellent and poor wines. 
 
-# References:
+# References
 
 http://rcompanion.org/handbook/I_12.html
 http://ggplot2.tidyverse.org/reference/geom_density.html
